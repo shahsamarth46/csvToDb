@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 public class LoginController {
@@ -28,6 +29,11 @@ public class LoginController {
 
         Employee e=loginService.createUser(employee,role);
             return e;
+    }
+
+    @PostMapping("/updload-csv")
+    public void uploadCsv(@RequestParam("file") MultipartFile file){
+
     }
 
 

@@ -3,7 +3,7 @@ package com.example.demo_updated.demo_updated.service.impl;
 import com.example.demo_updated.demo_updated.customDTO.CreateUserDTO;
 import com.example.demo_updated.demo_updated.customDTO.LoginDTO;
 import com.example.demo_updated.demo_updated.model.Employee;
-import com.example.demo_updated.demo_updated.repository.LoginRepository;
+import com.example.demo_updated.demo_updated.repository.EmployeeRepository;
 import com.example.demo_updated.demo_updated.service.LoginService;
 import com.example.demo_updated.demo_updated.utils.CommonUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -14,13 +14,13 @@ import org.springframework.stereotype.Service;
 public class LoginServiceImpl implements LoginService {
 
     @Autowired
-    private LoginRepository loginRepository;
+    private EmployeeRepository employeeRepository;
 
 
     @Override
     public String isValidUserAndReturnRole(LoginDTO loginDTO) {
 
-        Employee e=loginRepository.findByUsernameAndPassword(loginDTO.getUserName(),loginDTO.getPassword());
+        Employee e= employeeRepository.findByUsernameAndPassword(loginDTO.getUserName(),loginDTO.getPassword());
         if(e != null && !StringUtils.isEmpty(e.getRole())){
             return e.getRole();
         }
@@ -33,7 +33,7 @@ public class LoginServiceImpl implements LoginService {
         if(CommonUtils.hmapForRoleMapping.containsKey(role))
         {
             employee.setRole(CommonUtils.hmapForRoleMapping.get(role));
-           return  loginRepository.save(employee);
+           return  employeeRepository.save(employee);
         }
 
         return null;
