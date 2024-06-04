@@ -4,14 +4,14 @@ import com.example.demo_updated.demo_updated.customDTO.CreateUserDTO;
 import com.example.demo_updated.demo_updated.customDTO.LoginDTO;
 import com.example.demo_updated.demo_updated.model.Employee;
 import com.example.demo_updated.demo_updated.repository.EmployeeRepository;
-import com.example.demo_updated.demo_updated.service.LoginService;
+import com.example.demo_updated.demo_updated.service.EmployeeService;
 import com.example.demo_updated.demo_updated.utils.CommonUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class LoginServiceImpl implements LoginService {
+public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
     private EmployeeRepository employeeRepository;
