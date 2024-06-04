@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.util.Map;
+
 @RestController
 public class EmployeeController {
 
@@ -31,8 +34,10 @@ public class EmployeeController {
     }
 
     @PostMapping("/updload-csv")
-    public void uploadCsv(@RequestParam("file") MultipartFile file){
-    
+    public Map<String,Integer> uploadCsv(@RequestParam("file") MultipartFile file) throws Exception {
+
+           Map<String,Integer> hmap = employeeService.uploadCsv(file);
+           return hmap;
     }
 
 
