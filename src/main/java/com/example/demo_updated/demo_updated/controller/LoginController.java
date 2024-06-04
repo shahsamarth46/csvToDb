@@ -10,7 +10,7 @@ public class LoginController {
 
     @PostMapping("/login")
     public String login(@RequestBody LoginDTO loginDTO){
-
+        System.out.println("test....");
 
 
     }
